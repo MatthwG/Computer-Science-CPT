@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 2123456578}
   - component: {fileID: 2123456577}
   m_Layer: 0
-  m_Name: Ali you better have this on ur screen
+  m_Name: Monkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
