@@ -24,6 +24,9 @@ public class Attack : MonoBehaviour
 
     private void OnCollision2D(Collision collision)
     {
-        Destroy(gameObject);
+        if(collision.gameObject.tag == "Bullet")
+        {
+            Destroy(gameObject);
+        }
     } 
 }
