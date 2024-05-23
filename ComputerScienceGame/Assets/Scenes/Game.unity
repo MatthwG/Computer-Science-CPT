@@ -485,6 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LaunchOffset: {fileID: 716285255}
   ProjectilePrefab: {fileID: -4167422883472978209, guid: d5dd8f6e6709bdf4c8a29088fd81badb, type: 3}
+  ProjectilePrefab2: {fileID: 3347465195580494436, guid: 57070ef5a2938a5489a3f3cae786002f, type: 3}
   rb: {fileID: 6178669127476570620}
   groundCheck: {fileID: 2979923539777032759}
   groundLayer:

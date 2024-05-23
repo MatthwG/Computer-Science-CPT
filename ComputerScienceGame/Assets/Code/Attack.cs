@@ -5,6 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public GameObject ProjectilePrefab;
+    public GameObject ProjectilePrefab2;
     public Movement Movey;
     public float Speed = 4.5f;
 

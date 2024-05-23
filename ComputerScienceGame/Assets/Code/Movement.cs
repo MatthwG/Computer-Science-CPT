@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     private float horizontal;
     
     public Attack ProjectilePrefab;
+    public Attack ProjectilePrefab2;
     private float speed = 8f;
     private float jumpingPower = 26f;
     private bool isFacingRight = true;
@@ -35,9 +36,13 @@ public class Movement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1")&& transform.localScale.x == 1.77403772f)
         {
             Instantiate(ProjectilePrefab,LaunchOffset.position, transform.rotation);
+        }
+        if (Input.GetButtonDown("Fire1")&& transform.localScale.x == -1.77403772f)
+        {
+            Instantiate(ProjectilePrefab2,LaunchOffset.position, transform.rotation);
         }
         Flip();
     }
@@ -58,6 +63,7 @@ public class Movement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            
             
         }
         /*if (isFacingRight == true)
