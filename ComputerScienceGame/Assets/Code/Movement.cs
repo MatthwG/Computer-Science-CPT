@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
+    public Transform LaunchOffset;
     private float horizontal;
+    
+    public Attack ProjectilePrefab;
     private float speed = 8f;
     private float jumpingPower = 26f;
     private bool isFacingRight = true;
@@ -27,9 +29,15 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
+
         if (Input.GetButtonDown("Jump")&& rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(ProjectilePrefab,LaunchOffset.position, transform.rotation);
         }
         Flip();
     }
@@ -50,6 +58,16 @@ public class Movement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            
         }
+        /*if (isFacingRight == true)
+        {
+            Speed = 4.5f;
+        }
+        if (isFacingRight == false)
+        {
+            Speed = -4.5f;
+        }
+        */
     }
 }

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject ProjectilePrefab;
+    public Movement Movey;
+    public float Speed = 4.5f;
+
     void Start()
     {
         
@@ -13,6 +16,13 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position += transform.right * Time.deltaTime*Speed;
+
         
     }
+
+    private void OnCollision2D(Collision collision)
+    {
+        Destroy(gameObject);
+    } 
 }
