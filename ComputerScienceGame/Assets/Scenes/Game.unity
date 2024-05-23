@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 716285254}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.53, y: -0.06, z: 0.024922643}
+  m_LocalPosition: {x: 0.98, y: -0.06, z: 0.024922643}
   m_LocalScale: {x: 0.56368583, y: 0.27861464, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -484,8 +484,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LaunchOffset: {fileID: 716285255}
-  ProjectilePrefab: {fileID: -4167422883472978209, guid: d5dd8f6e6709bdf4c8a29088fd81badb, type: 3}
-  ProjectilePrefab2: {fileID: 3347465195580494436, guid: 57070ef5a2938a5489a3f3cae786002f, type: 3}
+  ProjectilePrefab: {fileID: 311315412568673237, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
+  ProjectilePrefab2: {fileID: 7809974724241190742, guid: a253bd528a455e7479ff4478d432326a, type: 3}
   rb: {fileID: 6178669127476570620}
   groundCheck: {fileID: 2979923539777032759}
   groundLayer:
