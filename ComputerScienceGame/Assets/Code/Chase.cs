@@ -6,7 +6,8 @@ public class Chase : MonoBehaviour
 {
     public GameObject player;
     public float speed;
-
+    public float health = 2;
+    [SerializeField] private Rigidbody2D rb;
     private float distance;
         void Start()
     {
@@ -22,11 +23,17 @@ public class Chase : MonoBehaviour
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
-    private void OnCollision2D(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Bullet")
         {
-            Destroy(gameObject);
+            rb.AddForce(transform.right * 10f,ForceMode2D.Impulse);
+            health = health - 1f;
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            
         }
     } 
 }

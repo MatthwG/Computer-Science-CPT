@@ -13,6 +13,14 @@ PrefabInstance:
       value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 311315412568673237, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 7231341154540526279, guid: 3673ad8865bd41f42a5095a4aec25c99, type: 3}
+    - target: {fileID: 311315412568673237, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
+      propertyPath: particle1
+      value: 
+      objectReference: {fileID: 7231341154540526279, guid: 3673ad8865bd41f42a5095a4aec25c99, type: 3}
+    - target: {fileID: 311315412568673237, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
       propertyPath: ProjectilePrefab
       value: 
       objectReference: {fileID: 5136342491529609527, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
@@ -20,6 +28,10 @@ PrefabInstance:
       propertyPath: ProjectilePrefab2
       value: 
       objectReference: {fileID: 3420322693582448052}
+    - target: {fileID: 1138171404452542500, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.016
+      objectReference: {fileID: 0}
     - target: {fileID: 2120727270573579813, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.5
