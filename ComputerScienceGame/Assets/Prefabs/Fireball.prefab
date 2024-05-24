@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 311315412568673237}
   m_Layer: 4
   m_Name: Fireball
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,6 +166,8 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 5136342491529609527}
   ProjectilePrefab2: {fileID: 3420322693582448052, guid: a253bd528a455e7479ff4478d432326a, type: 3}
   Movey: {fileID: 0}
+  particle: {fileID: 7231341154540526279, guid: 3673ad8865bd41f42a5095a4aec25c99, type: 3}
+  particle1: {fileID: 7231341154540526279, guid: 3673ad8865bd41f42a5095a4aec25c99, type: 3}
   Speed: 4.5
 --- !u!1 &7427776402283173380
 GameObject:

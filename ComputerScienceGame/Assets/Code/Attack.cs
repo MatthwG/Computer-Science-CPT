@@ -7,6 +7,8 @@ public class Attack : MonoBehaviour
     public GameObject ProjectilePrefab;
     public GameObject ProjectilePrefab2;
     public Movement Movey;
+    public ParticleSystem particle;
+    public ParticleSystem particle1;
     public float Speed = 4.5f;
 
     void Start()
@@ -18,12 +20,19 @@ public class Attack : MonoBehaviour
     void Update()
     {
         transform.position += transform.right * Time.deltaTime*Speed;
-
+        
         
     }
 
-    private void OnCollision2D(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        if(collision.gameObject.tag == "All")
+        {
+            
+            Destroy(gameObject);
+            
+            
+        }
+        
     } 
 }
