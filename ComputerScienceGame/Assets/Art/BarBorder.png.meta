@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:ComputerScienceGame/Assets/Art/Fireball1.png.meta
 <<<<<<< HEAD
 guid: 060991ed8c18dcd48a8522a5a6b702d5
 =======
 guid: 22913b9100aba0246aca1fb16bc3992e
 >>>>>>> 10e9ed42b7bd60e29b38ecdc55a7e94356c913da
+=======
+guid: 2aeceb666a89f2f4fae813ecce8ff3a9
+>>>>>>> f697848839c9855262b3aa98cbbd5b7fc3a49d86:ComputerScienceGame/Assets/Art/BarBorder.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

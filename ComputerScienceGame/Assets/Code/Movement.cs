@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     private float horizontal;
     
     public Attack ProjectilePrefab;
+    public HealthBar manabar;
     public Attack ProjectilePrefab2;
     private float speed = 8f;
     private float jumpingPower = 26f;
@@ -36,13 +37,15 @@ public class Movement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
-        if (Input.GetButtonDown("Fire1")&& transform.localScale.x == 1.77403772f)
+        if (Input.GetButtonDown("Fire1")&& transform.localScale.x == 1.51f&&manabar.slider.value >=1)
         {
             Instantiate(ProjectilePrefab,LaunchOffset.position, transform.rotation);
+            manabar.slider.value = manabar.slider.value - 5f;
         }
-        if (Input.GetButtonDown("Fire1")&& transform.localScale.x == -1.77403772f)
+        if (Input.GetButtonDown("Fire1")&& transform.localScale.x == -1.51f&&manabar.slider.value >=1)
         {
             Instantiate(ProjectilePrefab2,LaunchOffset.position, transform.rotation);
+            manabar.slider.value = manabar.slider.value - 5f;
         }
         Flip();
     }
