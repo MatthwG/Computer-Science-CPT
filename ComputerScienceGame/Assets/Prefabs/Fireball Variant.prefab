@@ -55,7 +55,11 @@ PrefabInstance:
     - target: {fileID: 2221947919347879048, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 18933c9cd1587c24b8ee57f026a6e6e6, type: 3}
+      objectReference: {fileID: 21300000, guid: 573a72bce65b2e04f993c400c5de689f, type: 3}
+    - target: {fileID: 2221947919347879048, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4415206775015268213, guid: 55d5782a2dfbcdb458d7818082d84dca, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.5
