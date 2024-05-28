@@ -7,6 +7,10 @@ public class Movement : MonoBehaviour
     public Transform LaunchOffset;
     private float horizontal;
     
+    public Animation anim;
+
+    public AudioSource audioSource;
+    public AudioClip fire;
     public Attack ProjectilePrefab;
     public HealthBar manabar;
     public Attack ProjectilePrefab2;
@@ -19,7 +23,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = gameObject.GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -39,11 +43,14 @@ public class Movement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == 1.51f&&manabar.slider.value >=1)
         {
+            anim.Play();
+            audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
         }
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == -1.51f&&manabar.slider.value >=1)
         {
+            audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab2,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
         }
