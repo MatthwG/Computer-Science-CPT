@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class Movement : MonoBehaviour
 {
     public Transform LaunchOffset;
     private float horizontal;
     
-    public Animation anim;
+    public bool isGrounded = false;
+    public float Fire = 0f;
+    Animator animator;
 
     public AudioSource audioSource;
     public AudioClip fire;
@@ -15,7 +17,7 @@ public class Movement : MonoBehaviour
     public HealthBar manabar;
     public Attack ProjectilePrefab2;
     private float speed = 8f;
-    private float jumpingPower = 26f;
+    private float jumpingPower = 50f;
     private bool isFacingRight = true;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -23,7 +25,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = gameObject.GetComponent<Animation>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,25 +33,25 @@ public class Movement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump")&&IsGrounded())
+        if (Input.GetButtonDown("Jump")&& isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            isGrounded = false;
+            animator.SetBool("isJumping", !isGrounded);
         }
-
-        if (Input.GetButtonDown("Jump")&& rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
+        
+        
 
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == 1.51f&&manabar.slider.value >=1)
         {
-            anim.Play();
+            animator.SetFloat("Fire", 1);
             audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
         }
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == -1.51f&&manabar.slider.value >=1)
         {
+            animator.SetFloat("Fire", 1);
             audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab2,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
@@ -59,11 +61,16 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
+        animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
-    private bool IsGrounded()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        
+        isGrounded = true;
+        animator.SetBool("isJumping", !isGrounded);
+        
     }
     private void Flip()
     {
