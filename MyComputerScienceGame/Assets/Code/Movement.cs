@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     public HealthBar manabar;
     public Attack ProjectilePrefab2;
     private float speed = 8f;
-    private float jumpingPower = 26f;
+    private float jumpingPower = 50f;
     private bool isFacingRight = true;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
