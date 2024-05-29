@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     private float horizontal;
     
     public bool isGrounded = false;
-
+    public float Fire = 0f;
     Animator animator;
 
     public AudioSource audioSource;
@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     public HealthBar manabar;
     public Attack ProjectilePrefab2;
     private float speed = 8f;
-    private float jumpingPower = 26f;
+    private float jumpingPower = 50f;
     private bool isFacingRight = true;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -25,41 +25,50 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("Shoot", 0);
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump")&& isGrounded)
         {
+            
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             isGrounded = false;
             animator.SetBool("isJumping", !isGrounded);
+            animator.SetFloat("Shoot", 0);
         }
         
         
 
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == 1.51f&&manabar.slider.value >=1)
         {
-            
+            animator.SetFloat("Shoot", 1);
             audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
+           
         }
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == -1.51f&&manabar.slider.value >=1)
         {
+            animator.SetFloat("Shoot", 1);
             audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab2,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
+            
         }
+        
         Flip();
     }
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        
         animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
         animator.SetFloat("yVelocity", rb.velocity.y);
     }
@@ -69,6 +78,7 @@ public class Movement : MonoBehaviour
         
         isGrounded = true;
         animator.SetBool("isJumping", !isGrounded);
+        
         
     }
     private void Flip()
