@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     public bool isGrounded = false;
     public float Fire = 0f;
     Animator animator;
+    public float fireindicator = 0f;
 
     public AudioSource audioSource;
     public AudioClip fire;
@@ -27,12 +28,14 @@ public class Movement : MonoBehaviour
     {
         
         animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         animator.SetFloat("Shoot", 0);
+        fireindicator = 0f;
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump")&& isGrounded)
@@ -49,17 +52,21 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == 1.51f&&manabar.slider.value >=1)
         {
             animator.SetFloat("Shoot", 1);
+            
             audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
+            fireindicator = fireindicator + 1;
            
         }
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == -1.51f&&manabar.slider.value >=1)
         {
             animator.SetFloat("Shoot", 1);
+            
             audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab2,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
+            fireindicator = fireindicator + 1;
             
         }
         

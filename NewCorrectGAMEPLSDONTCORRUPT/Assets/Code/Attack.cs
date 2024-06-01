@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
     public Movement Movey;
     public ParticleSystem particle;
     public ParticleSystem particle1;
-    public float Speed = 4.5f;
+    public float Speed = 10f;
 
     void Start()
     {

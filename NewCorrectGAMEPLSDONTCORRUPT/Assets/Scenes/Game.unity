@@ -336,6 +336,7 @@ MonoBehaviour:
   LaunchOffset: {fileID: 1892038877}
   isGrounded: 0
   Fire: 0
+  fireindicator: 0
   audioSource: {fileID: 1399989558}
   fire: {fileID: 8300000, guid: cc681b3bf4267c04f89fb6e2c528b424, type: 3}
   ProjectilePrefab: {fileID: 1127329581340379340, guid: 5d8c51f110639044b93d27daf3687905, type: 3}
@@ -404,8 +405,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.11685598, y: -0.4032563}
+  m_UsedByComposite: 1
+  m_Offset: {x: -0.13330553, y: -0.4032563}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -416,7 +417,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0517018, y: 3.8600004}
+  m_Size: {x: 0.47254744, y: 3.8600004}
   m_EdgeRadius: 0
 --- !u!212 &226168269
 SpriteRenderer:
@@ -8702,6 +8703,79 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1520701332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520701334}
+  - component: {fileID: 1520701333}
+  m_Layer: 0
+  m_Name: Ramp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!68 &1520701333
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520701332}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.40563512, y: -0.25470996}
+  - {x: 2.099012, y: 0.721678}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!4 &1520701334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520701332}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.1965127, y: -3.6343408, z: -0.5373862}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1892038876
 GameObject:
   m_ObjectHideFlags: 0
@@ -8713,6 +8787,7 @@ GameObject:
   - component: {fileID: 1892038877}
   - component: {fileID: 1892038878}
   - component: {fileID: 1892038879}
+  - component: {fileID: 1892038880}
   m_Layer: 0
   m_Name: ShootHere
   m_TagString: Untagged
@@ -8745,7 +8820,7 @@ Animator:
   m_GameObject: {fileID: 1892038876}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 196bf725ef8aa044b800c4f8db4de198, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8808,6 +8883,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1892038880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892038876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbe4f8b8cd4c97419f7c807dda2e643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 226168266}
 --- !u!1 &1943908690
 GameObject:
   m_ObjectHideFlags: 0
@@ -8943,3 +9031,4 @@ SceneRoots:
   - {fileID: 14603705}
   - {fileID: 1943908695}
   - {fileID: 371338686}
+  - {fileID: 1520701334}
