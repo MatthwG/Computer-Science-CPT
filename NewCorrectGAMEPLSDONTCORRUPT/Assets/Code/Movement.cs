@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     public float Fire = 0f;
     Animator animator;
     public float fireindicator = 0f;
-
+    public float openindicator = 0f;
     public AudioSource audioSource;
     public AudioClip fire;
     public Attack ProjectilePrefab;
@@ -34,8 +34,13 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y <= -14f)
+        {
+            transform.position = new Vector2(-21.7f,-1.09f);
+        }
         animator.SetFloat("Shoot", 0);
         fireindicator = 0f;
+        openindicator = 0f;
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump")&& isGrounded)
@@ -46,7 +51,10 @@ public class Movement : MonoBehaviour
             animator.SetBool("isJumping", !isGrounded);
             animator.SetFloat("Shoot", 0);
         }
-        
+        if (transform.position.x > 73f && transform.position.x < 76f)
+        {
+            openindicator = 1f;
+        }
         
 
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == 1.51f&&manabar.slider.value >=1)
