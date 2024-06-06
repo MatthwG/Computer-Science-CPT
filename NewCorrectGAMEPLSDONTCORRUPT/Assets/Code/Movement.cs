@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
     public Transform LaunchOffset;
@@ -36,24 +37,30 @@ public class Movement : MonoBehaviour
     {
         if (transform.position.y <= -14f)
         {
-            transform.position = new Vector2(-21.7f,-1.09f);
+            transform.position = new Vector3(-21.7f,-1.09f,-16.61f);
         }
+        
         animator.SetFloat("Shoot", 0);
         fireindicator = 0f;
         openindicator = 0f;
         horizontal = Input.GetAxisRaw("Horizontal");
-
+        
         if (Input.GetButtonDown("Jump")&& isGrounded)
         {
-            
+            animator.SetFloat("Turn", 0);
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             isGrounded = false;
             animator.SetBool("isJumping", !isGrounded);
             animator.SetFloat("Shoot", 0);
         }
-        if (transform.position.x > 73f && transform.position.x < 76f)
+        if (transform.position.x > 70f && transform.position.x < 76f)
         {
+            animator.SetFloat("Turn", 1);
             openindicator = 1f;
+            if (transform.position.x > 74f)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            }
         }
         
 
@@ -61,6 +68,7 @@ public class Movement : MonoBehaviour
         {
             animator.SetFloat("Shoot", 1);
             
+            animator.SetFloat("Turn", 0);
             audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
@@ -69,8 +77,9 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1")&& transform.localScale.x == -1.51f&&manabar.slider.value >=1)
         {
+            //rb.velocity = new Vector2(rb.velocity.x + 500f, 1);
             animator.SetFloat("Shoot", 1);
-            
+            animator.SetFloat("Turn", 0);
             audioSource.PlayOneShot(fire,1);
             Instantiate(ProjectilePrefab2,LaunchOffset.position, transform.rotation);
             manabar.slider.value = manabar.slider.value - 5f;
@@ -83,7 +92,7 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        
+        animator.SetFloat("Turn", 0);
         animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
         animator.SetFloat("yVelocity", rb.velocity.y);
     }
